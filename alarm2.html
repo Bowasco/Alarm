@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="time"></h1>
+    <main class="content">
+        <div id="column">
+            <select id="select_1">
+                <option value="Hour">Hour</option>
+            </select>
+        </div>
+        <div id="column">
+            <select id="select_2">
+                <option value="Minutes">Minutes</option>
+            </select>
+        </div>
+        <div id="column">
+            <select id="select_3">
+                <option value="AM/PM">AM/PM</option>
+            </select>
+        </div>
+        <button onclick="setAlarm()">Set Alarm</button>
+    </main>
+</body>
+</html>
+<script>
+
+const selectMenu = document.getElementById('select_1')
+const selectMenu2 = document.getElementById('select_2')
+const selectMenu3 = document.getElementById('select_3')
+
+console.log(selectMenu);
+
+for (let i = 12; i > 0 ; i--) {
+    i = i < 10 ? "0" + i : i;
+
+    let option = `<option value = "${i}">${i}</option> `
+    selectMenu.innerHTML += `<option value="${i}"> ${i} </option>`
+    console.log(i);
+}
+
+for (let i = 59; i >= 0 ; i--) {
+    i = i < 10 ? "0" + i : i;
+
+    let option = `<option value = "${i}">${i}</option> `
+    selectMenu2.innerHTML += `<option value="${i}"> ${i} </option>`
+    console.log(i);
+}
+
+for (let i = 2; i > 0 ; i--) {
+    let ampm = i == 1 ? "AM" : "PM"
+
+    let option = `<option value = "${ampm}">${ampm}</option> `
+    selectMenu3.innerHTML += `<option value="${ampm}"> ${ampm} </option>`
+    console.log(ampm);
+}
+
+
+
+date = new Date()
+
+setInterval(() => {
+    date = new Date()
+    time.innerHTML = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()} ${selectMenu3.value}`
+
+    if (selectMenu.value == date.getHours() && selectMenu2.value == date.getMinutes()) {
+        let alarmSound = new Audio("WhatsApp Audio 2024-03-25 at 22.29.07_2c99188d.mp3")
+    }
+
+}, 1000);
+
+function setAlarm() {
+    date = new Date()
+    hour.innerHTML = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()} ${selectMenu3.value}`
+
+    if () {
+        alert("Alarm has been set")
+    }
+}
+
+
+
+
+
+</script>
